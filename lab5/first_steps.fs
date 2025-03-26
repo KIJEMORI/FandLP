@@ -90,3 +90,13 @@ let main7 digit funct init =
         | _ -> next_rez
 
     step digit init
+
+
+// Задание 8
+let sum a b = a+b
+
+System.Console.WriteLine(main7 711 (fun x y -> x+y) 0)
+System.Console.WriteLine(main7 271 (fun x y -> x*y) 1)
+System.Console.WriteLine(main7 711 (fun x y -> match x>y with| true -> x| false -> y) 0)
+System.Console.WriteLine(main7 711 (fun x y -> match x<y with| true -> x| false -> y) 9)
+

@@ -79,3 +79,14 @@ let main6 a =
 System.Console.WriteLine(main6 false 5)
 
 // Задание 7
+
+let main7 digit funct init =
+    let rec step digit rez=
+        let next_rez = funct (digit%10) rez
+        let next_digit = digit/10
+   
+        match next_digit with
+        | next_digit when next_digit > 0 -> step next_digit next_rez
+        | _ -> next_rez
+
+    step digit init

@@ -175,5 +175,28 @@ let main13 digit funct init =
     step digit init
 
 System.Console.WriteLine(main13 365 (fun x y -> x+y) 0)
+System.Console.WriteLine(main13 271828 (fun x y -> x+y) 0)
+
+
+// Задание 15
+
+let main15 digit funct init funcItsNeed=
+    let rec step minidigit rez=
+        let itsNeed = vzaSimple (minidigit%10) digit
+        let itsNeed = itsNeed && funcItsNeed (minidigit%10)
+        let next_digit = minidigit/10
+
+        let next_rez = funct rez (minidigit%10) 
+       
+        match (next_digit, itsNeed) with
+        | (next_digit,true) when next_digit > 0 -> step next_digit next_rez
+        | (next_digit,false) when next_digit > 0 -> step next_digit rez 
+        | (next_digit,true) -> next_rez
+        | _ -> rez
+
+    step digit init
+
+System.Console.WriteLine(main15 365 (fun x y -> x+y) 0 (fun x -> match x with |x when x>3 -> true |_ -> false))
+System.Console.WriteLine(main15 271828 (fun x y -> x+y) 0 (fun x -> match x with |x when x>1 -> true|_->false))
 
 

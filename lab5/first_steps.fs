@@ -199,4 +199,25 @@ let main15 digit funct init funcItsNeed=
 System.Console.WriteLine(main15 365 (fun x y -> x+y) 0 (fun x -> match x with |x when x>3 -> true |_ -> false))
 System.Console.WriteLine(main15 271828 (fun x y -> x+y) 0 (fun x -> match x with |x when x>1 -> true|_->false))
 
+// Вариант 7
+// Задание 16
+
+let isSimple a =
+    let rec obhod index =
+        match index with
+        |index when (a%index=0 && index <> a)-> false   
+        |index when index < a -> obhod (index+1)
+        |_ -> true
+    obhod 2
+
+let main16 a =
+    let rec obhod index sum=
+        match index with
+        |index when (a%index=0 && isSimple index) -> obhod (index+1) (sum+index) 
+        |index when (index >= a) -> sum
+        |_ -> obhod (index+1) sum
+    obhod 1 0
+System.Console.WriteLine("Task 16")
+System.Console.WriteLine(main16 257)
+System.Console.WriteLine(main16 267)
 

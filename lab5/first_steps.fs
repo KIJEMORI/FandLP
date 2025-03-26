@@ -123,3 +123,13 @@ System.Console.WriteLine(main9 7112 (fun x y -> x+y) 0 (fun x -> match x%2 with 
 System.Console.WriteLine(main9 271 (fun x y -> x*y) 1 (fun x -> true))
 System.Console.WriteLine(main9 111 (fun x y -> match x>y with| true -> x| false -> y) 0 (fun x -> match x with |x when x>5 -> true|_ -> false))
 System.Console.WriteLine(main9 711 (fun x y -> match x<y with| true -> x| false -> y) 9 (fun x -> false))
+
+// Задание 11
+System.Console.Write("Введите ваш любимый язык: ")
+let favoriteLanguage = System.Console.ReadLine()
+
+let main11 language =
+    match language with
+    |"F#"|"Prolog" -> "Подлиза"
+    |_ -> "Нормис"
+System.Console.WriteLine(main11 favoriteLanguage)

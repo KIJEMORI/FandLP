@@ -133,3 +133,47 @@ let main11 language =
     |"F#"|"Prolog" -> "Подлиза"
     |_ -> "Нормис"
 System.Console.WriteLine(main11 favoriteLanguage)
+
+// Задание 12
+//System.Console.Write("Введите ваш любимый язык: ")
+//favoriteLanguage = System.Console.ReadLine()
+
+let main12 (language) =
+    match language with
+    |"F#"|"Prolog" -> "Подлиза"
+    |_ -> "Нормис"
+//System.Console.WriteLine(main12 favoriteLanguage)
+
+
+// Задание 13
+
+let vzaSimple a b =
+    let rec poisk a b index = 
+        let ostB = b%index
+        let ostA = a%index
+        match (ostA, ostB) with
+        |(0,0) -> false
+        | _ when index < a -> poisk a b (index+1)
+        | _ -> true
+    match (a,b) with
+    | (a,b) when a<b -> poisk a b 2
+    | _ -> poisk b a 2
+
+let main13 digit funct init =
+    let rec step minidigit rez=
+        let itsNeed = vzaSimple (minidigit%10) digit
+        let next_digit = minidigit/10
+
+        let next_rez = funct rez (minidigit%10) 
+       
+        match (next_digit, itsNeed) with
+        | (next_digit,true) when next_digit > 0 -> step next_digit next_rez
+        | (next_digit,false) when next_digit > 0 -> step next_digit rez 
+        | (next_digit,true) -> next_rez
+        | _ -> rez
+
+    step digit init
+
+System.Console.WriteLine(main13 365 (fun x y -> x+y) 0)
+
+

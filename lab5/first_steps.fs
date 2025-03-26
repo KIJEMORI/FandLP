@@ -100,3 +100,26 @@ System.Console.WriteLine(main7 271 (fun x y -> x*y) 1)
 System.Console.WriteLine(main7 711 (fun x y -> match x>y with| true -> x| false -> y) 0)
 System.Console.WriteLine(main7 711 (fun x y -> match x<y with| true -> x| false -> y) 9)
 
+// Задание 9
+
+let main9 digit funct init funcItsNeed=
+    let rec step digit rez=
+        let itsNeed = funcItsNeed (digit%10)
+        let next_digit = digit/10
+
+        let next_rez = funct rez (digit%10) 
+       
+        match (next_digit, itsNeed) with
+        | (next_digit,true) when next_digit > 0 -> step next_digit next_rez
+        | (next_digit,false) when next_digit > 0 -> step next_digit rez 
+        | (next_digit,true) -> next_rez
+        | _ -> rez
+
+    step digit init
+
+// Задание 10
+System.Console.WriteLine("Task 10")
+System.Console.WriteLine(main9 7112 (fun x y -> x+y) 0 (fun x -> match x%2 with |1 -> true |0->false))
+System.Console.WriteLine(main9 271 (fun x y -> x*y) 1 (fun x -> true))
+System.Console.WriteLine(main9 111 (fun x y -> match x>y with| true -> x| false -> y) 0 (fun x -> match x with |x when x>5 -> true|_ -> false))
+System.Console.WriteLine(main9 711 (fun x y -> match x<y with| true -> x| false -> y) 9 (fun x -> false))

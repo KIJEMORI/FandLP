@@ -221,3 +221,22 @@ System.Console.WriteLine("Task 16")
 System.Console.WriteLine(main16 257)
 System.Console.WriteLine(main16 267)
 
+// Задание 17
+
+let main17 a =
+    let rec obhod digit count=
+        let thisdigit = digit%10
+        let next_a = digit/10
+        let isNeed = thisdigit> 3 && thisdigit%2=1
+        match next_a with
+        | 0 when (isNeed) -> count + 1
+        | 0 -> count
+        | next_a when (isNeed) -> obhod next_a (count + 1)
+        | _ -> obhod next_a count
+    obhod a 0
+
+System.Console.WriteLine("Task 17")
+System.Console.WriteLine(main17 257)
+System.Console.WriteLine(main17 557)
+System.Console.WriteLine(main17 222)
+System.Console.WriteLine(main17 333)

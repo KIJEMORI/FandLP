@@ -269,3 +269,12 @@ System.Console.WriteLine(main18 257)
 System.Console.WriteLine(main18 557)
 System.Console.WriteLine(main18 222)
 System.Console.WriteLine(main18 333)
+
+// Задание 20
+
+let main20 (x,y) = 
+    match x with
+    |1 -> main16 y
+    |2 -> main17 y
+    |3 -> main18 y
+    |_ -> 0

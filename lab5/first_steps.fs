@@ -240,3 +240,32 @@ System.Console.WriteLine(main17 257)
 System.Console.WriteLine(main17 557)
 System.Console.WriteLine(main17 222)
 System.Console.WriteLine(main17 333)
+
+// Задание 18
+
+let main18 a = 
+    let sumCifr b =
+        let rec sumCifr1 digit sum =
+            let minidigit = digit%10
+            let next_digit = digit/10
+            match next_digit with
+            | 0 -> sum + minidigit
+            | _ -> sumCifr1 next_digit (sum+minidigit)
+        sumCifr1 b 0
+
+    let a_sumCifr = sumCifr a
+
+    let rec obhod index prod =
+        let isNeed = (a%index = 0 && a_sumCifr > (sumCifr index))
+        
+        match index with
+        | index when index = a -> prod
+        | index when isNeed -> obhod (index+1) (prod*index)
+        | _ -> obhod (index+1) prod
+    obhod 1 1
+
+System.Console.WriteLine("Task 18")
+System.Console.WriteLine(main18 257)
+System.Console.WriteLine(main18 557)
+System.Console.WriteLine(main18 222)
+System.Console.WriteLine(main18 333)

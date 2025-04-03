@@ -16,4 +16,24 @@ let rad n:int =
     |true -> Rad 1 n
     |false -> Rad 1 1
 
-System.Console.WriteLine(rad 504)
+//System.Console.WriteLine(rad 504)
+
+type Widget ={ID:int; Rad:int}
+
+let createRadLists n= 
+    
+    let rec add index list1=
+        
+        match index with
+            | index when index <= n -> 
+                let item = index
+                let rad = rad item
+                System.Console.WriteLine(string item + " " + string rad)
+                add (index+1) (list1 @ [{ID = item; Rad = rad}])
+            | _ -> list1
+       
+    add 1 []
+
+let length = 100000
+
+let nlist = createRadLists length

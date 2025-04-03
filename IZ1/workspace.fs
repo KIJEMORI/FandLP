@@ -44,3 +44,18 @@ let compareWidgets widget1 widget2 =
    0
 
 let sortlist = List.sortWith compareWidgets nlist
+
+let poisk list search=
+    printfn "Start poisk"
+    let rec poisk list index = 
+        //printfn "%d" index
+        match list with
+        |head::tail ->
+            match search = index with
+            |true -> head.ID
+            |false -> poisk tail (index+1)
+        |[] -> 0
+    poisk list 1
+
+let number = poisk sortlist 10000
+printfn "%d" number

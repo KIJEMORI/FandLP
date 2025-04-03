@@ -37,3 +37,10 @@ let createRadLists n=
 let length = 100000
 
 let nlist = createRadLists length
+
+let compareWidgets widget1 widget2 =
+   if widget1.Rad < widget2.Rad then -1 else
+   if widget1.Rad > widget2.Rad then 1 else
+   0
+
+let sortlist = List.sortWith compareWidgets nlist

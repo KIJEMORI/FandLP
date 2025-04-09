@@ -77,3 +77,23 @@ System.Console.WriteLine(f7 list1)
 
 let f8 list = List.length (List.filter (fun x -> (List.exists (fun el -> el * el = x) list)) list)
 System.Console.WriteLine(f8 list1)
+
+let rec cifrSum (n : int) : int = 
+    match n with
+    |0 -> 0
+    |_ -> (n%10) + (cifrSum (n / 10))
+
+let delCount n = 
+    let rec delCount n index count = 
+        match index with 
+        |n -> count + 1
+        |_ ->   
+                match (n % index) with 
+                |0 ->  delCount n (index+1) (count+1)
+                |_ ->  delCount n (index+1) count
+    delCount n 1 0
+
+let f9 list1 list2 list3 = List.zip3 (List.rev (List.sort list1)) (List.sortBy (fun x -> (cifrSum x)) list2) (List.rev (List.sortBy (fun x -> (delCount x)) list3))
+
+let list2 = f9 list1 list1 list1
+printf "%A" list2

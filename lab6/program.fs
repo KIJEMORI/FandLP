@@ -116,3 +116,39 @@ let list11 = createListString 5
 let f10 list1 = (List.sortBy (fun x -> String.length(x)) list1)
 let list21 = f10 list11
 printf "%A" list21
+
+
+// Задание 11
+// #8
+
+let getOption option=
+    match option with
+    | Some value -> value+1
+
+let f11 list1 = 
+    let items = (List.sort list1)[0..1]
+    let rec f111 index list11 =
+        match index with
+        | 2 ->  list11
+        | _ ->  let item = items[index] 
+                f111 (index+1) list11@[getOption(List.tryFindIndex (fun x -> x = item) list1)]
+    f111 0 []
+
+//let list2 = f11 list1
+//printf "%A" list2
+
+// Задание 12
+// #18
+
+let f12 list1 =
+    let n = getOption(List.tryFindIndex (fun x -> x = ((List.sort list1)[0])) list1)
+    printfn "d %d" n
+    let rec f121 list index  =
+        printfn "%d %d" index list1[index]
+        match index < n-1 with
+        |true -> f121 (list@[list1[index]]) (index+1)
+        |false -> list
+    f121 [] 0
+
+let list2 = f12 list1
+printfn "%A" list2

@@ -97,3 +97,22 @@ let f9 list1 list2 list3 = List.zip3 (List.rev (List.sort list1)) (List.sortBy (
 
 let list2 = f9 list1 list1 list1
 printf "%A" list2
+
+let createListString n= 
+    
+    let rec add index (list:list<string>)=
+        
+        match index with
+            | index when index <= n -> 
+                System.Console.Write(string index + ") ")
+                let item = System.Console.ReadLine()
+                add (index+1) (list @ [item])
+            | _ -> list
+       
+    add 1 []
+
+let list11 = createListString 5
+
+let f10 list1 = (List.sortBy (fun x -> String.length(x)) list1)
+let list21 = f10 list11
+printf "%A" list21

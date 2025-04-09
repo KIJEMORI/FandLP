@@ -70,6 +70,7 @@ let prefix root left right = (root(); left(); right())
 let infix root left right = (left(); root(); right())
 let postfix root left right = (left(); right(); root())
 
+
 let f7 list = List.nth list (List.findIndex (fun x -> x = (List.max (List.map (fun el -> List.length (List.filter (fun elem -> (elem = el)) list)) list))) (List.map (fun el -> List.length (List.filter (fun elem -> (elem = el)) list)) list))   
 
 System.Console.WriteLine(f7 list1)

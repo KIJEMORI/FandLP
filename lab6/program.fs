@@ -203,3 +203,11 @@ let f15 list1 =
 
 let list2 = f15 list1
 printfn "%A" list2
+
+// Задание 16
+// #58
+
+let f16 list = List.length (List.filter (fun x -> (List.exists (fun el -> el + el = x) list)) list)
+
+let list2 = f16 list1
+printfn "%d" list2

@@ -152,3 +152,27 @@ let f12 list1 =
 
 let list2 = f12 list1
 printfn "%A" list2
+
+// Задание 13
+// #28
+
+let f13 list1 =
+    let x1 = getOption(List.tryFindIndex (fun x -> x = ((List.rev (List.sort list1))[0])) list1)
+    let x2 = getOption(List.tryFindIndex (fun x -> x = ((List.rev (List.sort list1))[1])) (list1[(x1+1)..(List.length list1)])) + List.length list1[0..x1]
+
+    match x1>x2 with
+    |true ->    let tmp = x1
+                x1 = x2
+                x2 = tmp
+    |_ -> x1 = x1
+    
+
+    let rec f131 list index  =
+        printfn "%d %d" index list1[index]
+        match index < x2 with
+        |true -> f131 (list@[list1[index]]) (index+1)
+        |false -> list
+    f131 [] (x1+1)
+
+let list2 = f13 list1
+printfn "%A" list2

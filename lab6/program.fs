@@ -211,3 +211,24 @@ let f16 list = List.length (List.filter (fun x -> (List.exists (fun el -> el + e
 
 let list2 = f16 list1
 printfn "%d" list2
+
+// Задание 18
+// #8
+
+let f18 list1 list2  = List.filter (fun x -> List.contains x list1 && List.contains x list2) list1
+
+// Задание 19
+// #8
+
+let f19 string1 = 
+    
+    let split (text:string) = 
+        let list1 = Array.toList(text.Split [|' '|])
+
+        list1
+    
+    List.length (List.filter (fun x -> (String.length x)%2 = 0 ) (split string1))
+
+
+let list2 = f19 "kjk kj jkj"
+printfn "%A" list2

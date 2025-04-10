@@ -184,3 +184,22 @@ let f14 list1 list2 = List.length (List.filter (fun x -> List.contains x list2) 
 
 let list2 = f14 list1 [1;2;3]
 printfn "%d" list2
+
+// Задание 15
+// #48
+
+let f15 list1 = 
+    let max = (main5 list1)
+
+    let rec f151 list index = 
+        match index < List.length list1 with
+        |true ->    
+                    match max with 
+                    | item, quan ->     match list1[index] = item with
+                                        | true -> f151 (list@[index]) (index+1)
+                                        | false -> f151 list (index+1)
+        |false -> list
+    f151 [] 0
+
+let list2 = f15 list1
+printfn "%A" list2

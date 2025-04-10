@@ -176,3 +176,11 @@ let f13 list1 =
 
 let list2 = f13 list1
 printfn "%A" list2
+
+// Задание 14
+// #38
+
+let f14 list1 list2 = List.length (List.filter (fun x -> List.contains x list2) list1 )
+
+let list2 = f14 list1 [1;2;3]
+printfn "%d" list2

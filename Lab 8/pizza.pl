@@ -39,3 +39,6 @@ question4(X4):-	write("Is pizza has olives?"),nl,
 				write("0. NO"),nl,
 				read(X4).
 
+pr:-	question1(X1),question2(X2),question3(X3),question4(X4),
+		salami(X,X1),tomato(X,X2),chicken(X,X3),olives(X,X4),
+		write(X).
